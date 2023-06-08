@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration Success</title>
+    <title>Booking Details</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
-    <h1>Registration Successful</h1>
-    <p>Thank you for registering!</p>
+    <h1>{{ booking.name }}</h1>
+    <p>{{ booking.description }}</p>
+    <!-- Display other booking details -->
 </body>
 </html>

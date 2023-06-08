@@ -1,0 +1,34 @@
+<!-- search.html -->
+<form action="{{ url_for('search') }}" method="POST">
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="check_in_date">Check-in Date:</label>
+        <input type="date" name="check_in_date" id="check_in_date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="check_out_date">Check-out Date:</label>
+        <input type="date" name="check_out_date" id="check_out_date" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="room_type">Room Type:</label>
+        <select name="room_type" id="room_type" class="form-control">
+            <option value="">Any</option>
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="suite">Suite</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="amenities">Amenities:</label><br>
+        {% for amenity in amenities %}
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="amenities" value="{{ amenity.name }}">
+            <label class="form-check-label">{{ amenity.name }}</label>
+        </div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>

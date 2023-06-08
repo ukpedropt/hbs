@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Hotel</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1>Book Hotel</h1>
+    <h2>{{ hotel.name }}</h2>
+    <p>{{ hotel.description }}</p>
+    <form method="POST" action="{{ url_for('book_hotel', hotel_id=hotel.id) }}">
+        <label for="check_in_date">Check-in Date:</label>
+        <input type="date" id="check_in_date" name="check_in_date" required><br>
+        <label for="check_out_date">Check-out Date:</label>
+        <input type="date" id="check_out_date" name="check_out_date" required><br>
+        <input type="submit" value="Book">
+    </form>
+</body>
+</html>

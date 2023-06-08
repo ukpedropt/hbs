@@ -19,5 +19,16 @@
     
     <h1>Welcome to the Hotel Booking App!</h1>
     <p>{{ message }}</p>
+
+    <form action="{{ url_for('search') }}" method="POST" class="search-form">
+        <div class="form-group">
+            <input type="text" name="location" placeholder="Location" class="form-control">
+            <input type="text" name="check_in_date" placeholder="Check-in Date" class="form-control">
+            <input type="text" name="check_out_date" placeholder="Check-out Date" class="form-control">
+            <input type="text" name="room_type" placeholder="Room Type" class="form-control">
+            <input type="text" name="amenities" placeholder="Amenities" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
 </body>
 </html>
