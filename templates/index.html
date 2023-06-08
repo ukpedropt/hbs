@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hotel Booking App</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Hotel Booking App - Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Hotel Booking App</h1>
-    <p>Start booking your dream hotel today!</p>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/register">Register</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    <h1>Welcome to the Hotel Booking App!</h1>
+    <p>{{ message }}</p>
 </body>
 </html>
