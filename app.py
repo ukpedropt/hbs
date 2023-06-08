@@ -148,6 +148,8 @@ def admin_dashboard():
     users = User.query.all()
     return render_template('admin_dashboard.html', hotels=hotels, amenities=amenities, users=users)
 
+
+
 # Create sample hotels, rooms, and amenities
 @app.route('/create_sample_data')
 def create_sample_data():

@@ -1,34 +1,79 @@
-<!-- search.html -->
-<form action="{{ url_for('search') }}" method="POST">
-    <div class="form-group">
-        <label for="location">Location:</label>
-        <input type="text" name="location" id="location" class="form-control">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Hotels</title>
+  <style>
+    /* CSS for dropdown menus */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Hotels</h1>
+
+  <form action="{{ url_for('search') }}" method="POST">
+    <!-- Location dropdown -->
+    <div class="dropdown">
+      <label for="location">Location:</label>
+      <select name="location" id="location">
+        <option value="">Any</option>
+        <option value="Location A">Location A</option>
+        <option value="Location B">Location B</option>
+        <!-- Add more options here -->
+      </select>
     </div>
-    <div class="form-group">
-        <label for="check_in_date">Check-in Date:</label>
-        <input type="date" name="check_in_date" id="check_in_date" class="form-control">
+
+    <!-- Check-in date input -->
+    <div>
+      <label for="check_in_date">Check-in Date:</label>
+      <input type="date" name="check_in_date" id="check_in_date" required>
     </div>
-    <div class="form-group">
-        <label for="check_out_date">Check-out Date:</label>
-        <input type="date" name="check_out_date" id="check_out_date" class="form-control">
+
+    <!-- Check-out date input -->
+    <div>
+      <label for="check_out_date">Check-out Date:</label>
+      <input type="date" name="check_out_date" id="check_out_date" required>
     </div>
-    <div class="form-group">
-        <label for="room_type">Room Type:</label>
-        <select name="room_type" id="room_type" class="form-control">
-            <option value="">Any</option>
-            <option value="single">Single</option>
-            <option value="double">Double</option>
-            <option value="suite">Suite</option>
-        </select>
+
+    <!-- Room type dropdown -->
+    <div class="dropdown">
+      <label for="room_type">Room Type:</label>
+      <select name="room_type" id="room_type">
+        <option value="">Any</option>
+        <option value="Single">Single</option>
+        <option value="Double">Double</option>
+        <!-- Add more options here -->
+      </select>
     </div>
-    <div class="form-group">
-        <label for="amenities">Amenities:</label><br>
-        {% for amenity in amenities %}
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="amenities" value="{{ amenity.name }}">
-            <label class="form-check-label">{{ amenity.name }}</label>
+
+    <!-- Amenities checkboxes -->
+    <div>
+      <label>Amenities:</label>
+      {% for amenity in amenities %}
+        <div>
+          <input type="checkbox" name="amenities" value="{{ amenity.id }}" id="amenity_{{ amenity.id }}">
+          <label for="amenity_{{ amenity.id }}">{{ amenity.name }}</label>
         </div>
-        {% endfor %}
+      {% endfor %}
     </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
+
+    <!-- Submit button -->
+    <button type="submit">Search</button>
+  </form>
+</body>
+</html>
